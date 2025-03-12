@@ -70,8 +70,9 @@ def extract_text_from_pdf(pdf_path):
 def parse_mahalle_data(text):
     mahalle_listesi = []
     pattern = re.compile(
-        r"(\d+)\s+([0-9A-Za-zÇŞĞÜÖİçşğüöı\s\(\)-\.]+(?:-\w+)*)\s+([A-ZÇŞĞÜÖİ]+)\s*(?:->\s*([A-ZÇŞĞÜÖİ\s-]+))?"
+        r"(\d+)\s+([0-9A-Za-z\u00C0-\u017F\s\(\)-\.]+(?:-\w+)*)(?:\s+([A-ZÇŞĞÜÖİÂ]+))\s*(?:->\s*([A-ZÇŞĞÜÖİÂ\s-]+))?"
     )
+
     for line in text.split("\n"):
         match = pattern.match(line)
         if match:
